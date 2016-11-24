@@ -26,6 +26,7 @@ import org.testng.annotations.Test;
 public class SanaAbbasTestSuite {
 	WebDriver driver;
 	boolean outOfStock = false;
+	boolean bridals=false;
 	@BeforeTest
 	public void beforeTest() throws MalformedURLException {	
 
@@ -147,9 +148,6 @@ public class SanaAbbasTestSuite {
 			System.out.println("name is "+a.getAttribute("name"));
 			System.out.println("Tagname is "+a.getTagName());
 
-			//*[@id="bundle-option-87"]
-			//*[@id="bundle-option-84"]
-			//*[@id="product-options-wrapper"]/dl/dd/div
 			//*[@id="bundle-option-15"]
 			Select oSelect3 = new Select(driver.findElement(By.id(a.getAttribute("id"))));
 			oSelect3.selectByIndex(1);
@@ -159,8 +157,8 @@ public class SanaAbbasTestSuite {
 			addCart=driver.findElement(By.xpath("//*[@id='product_addtocart_form']/div[3]/div[7]/div[2]/div[3]/button"));
 			WebDriverWait waitForAddCart= new WebDriverWait(driver, 50);
 			waitForAddCart.until(ExpectedConditions.visibilityOf(addCart));
-			//			if(waitForAddCart.until(ExpectedConditions.visibilityOf(addCart)).equals(true))
-			//			{
+			//if(waitForAddCart.until(ExpectedConditions.visibilityOf(addCart)).equals(true))
+			//{
 			System.out.println("inside if instock");
 			addCart.click();
 			System.out.println("Add to Cart is clicked");
@@ -192,67 +190,53 @@ public class SanaAbbasTestSuite {
 			actions.moveToElement(randomProduct).click().perform();
 			System.out.println("Random product is clicked");
 
-			//String a=randomProduct.getAttribute("class");
-//			WebElement a=driver.findElement(By.cssSelector(".bundle-option.option-Size"));//*[@id="product-options-wrapper"]/dl/dd/div
-//			System.out.println(a.getText());
-//			System.out.println("id is "+a.getAttribute("id"));
-//			System.out.println("class is "+a.getAttribute("class"));
-//			System.out.println("name is "+a.getAttribute("name"));
-//			System.out.println("Tagname is "+a.getTagName());
-
-			//*[@id="bundle-option-87"]
-			//*[@id="bundle-option-84"]
-			//*[@id="product-options-wrapper"]/dl/dd/div
 			//*[@id="bundle-option-15"]
 			Select oSelect3 = new Select(driver.findElement(By.xpath("//*[@id='attribute133']")));
 			oSelect3.selectByIndex(1);
 			System.out.println("Size is Seleceted");
 
-			//*[@id="product_addtocart_form"]/div[3]/div[7]/div[2]/div[3]/button
-			//*[@id="product_addtocart_form"]/div[3]/div[5]/div[2]/div[4]/button
 			addCart=driver.findElement(By.xpath("//*[@id='product_addtocart_form']/div[3]/div[5]/div[2]/div[4]/button"));
 			WebDriverWait waitForAddCart= new WebDriverWait(driver, 50);
 			waitForAddCart.until(ExpectedConditions.visibilityOf(addCart));
-			//			if(waitForAddCart.until(ExpectedConditions.visibilityOf(addCart)).equals(true))
-			//			{
+			//if(waitForAddCart.until(ExpectedConditions.visibilityOf(addCart)).equals(true))
+			//{
 			System.out.println("inside if instock");
 			addCart.click();
 			System.out.println("Add to Cart is clicked");
 
 			//CHECKOUT
-			//*[@id="header-cart"]/div[3]/div[3]/div/a[1]/span
-			//*[@id="header-cart"]/div[3]/div[3]/div/a[1]/span
 			WebDriverWait waitForCheckOut= new WebDriverWait(driver, 50);
 			waitForCheckOut.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='header-cart']/div[3]/div[3]/div/a[1]/span"))).click();
 			System.out.println("CheckOut is clicked");
 		}
 		else if(randomLink==LinksString.get(3))
 		{
-			System.out.println("Page title is: " + driver.getTitle());
+			//System.out.println("Page title is: " + driver.getTitle());
 
-			//SELECT A RANDOM PRODUCT
-			List<WebElement> allProducts = driver.findElements(By.cssSelector("a.product-image"));
-			System.out.println("print the allProducts total size "+allProducts.size());
-			System.out.println("print the allProducts "+allProducts);
-			//System.out.println("print the allProducts.size() "+allProducts.size());
-			Random random2 = new Random();
-			WebElement randomProduct = allProducts.get(random2.nextInt(allProducts.size()));
-
-			WebDriverWait waitForRandomProduct= new WebDriverWait(driver, 100);
-			waitForRandomProduct.until(ExpectedConditions.visibilityOf(randomProduct));
-			System.out.println("Random product getText is "+randomProduct.getText());
-			System.out.println("Random product getAttribute title is "+randomProduct.getAttribute("class"));
-			//randomProduct.click();
-			Actions actions = new Actions(driver);
-			actions.moveToElement(randomProduct).click().perform();
-			System.out.println("Random product is clicked");
-			System.out.println("BOOK YOUR APPOINTMENT");
-			driver.quit();
-			System.exit(0);
+//			//SELECT A RANDOM PRODUCT
+//			List<WebElement> allProducts = driver.findElements(By.cssSelector("a.product-image"));
+//			System.out.println("print the allProducts total size "+allProducts.size());
+//			System.out.println("print the allProducts "+allProducts);
+//			//System.out.println("print the allProducts.size() "+allProducts.size());
+//			Random random2 = new Random();
+//			WebElement randomProduct = allProducts.get(random2.nextInt(allProducts.size()));
+//
+//			WebDriverWait waitForRandomProduct= new WebDriverWait(driver, 100);
+//			waitForRandomProduct.until(ExpectedConditions.visibilityOf(randomProduct));
+//			System.out.println("Random product getText is "+randomProduct.getText());
+//			System.out.println("Random product getAttribute title is "+randomProduct.getAttribute("class"));
+//			//randomProduct.click();
+//			Actions actions = new Actions(driver);
+//			actions.moveToElement(randomProduct).click().perform();
+//			System.out.println("Random product is clicked");
+			//System.out.println("BOOK YOUR APPOINTMENT");
+			bridals=true;
 			
 			
 		}
 	
+		if(bridals==false && outOfStock==false)
+		{
 		//FILL IN THE BILLING INFORMATION
 		driver.findElement(By.xpath("//*[@id='billing:firstname']")).sendKeys("test");
 		System.out.println("First Name is Enterd");
@@ -271,14 +255,6 @@ public class SanaAbbasTestSuite {
 		driver.findElement(By.xpath("//*[@id='billing:street1']")).sendKeys("test");
 		System.out.println("Street 1 is Enterd");
 
-//		driver.findElement(By.xpath("//*[@id='billing:street2']")).sendKeys("test");
-//		System.out.println("Street 2 is Enterd");
-
-		//driver.findElement(By.xpath("//*[@id='billing:region']")).sendKeys("test");
-		//System.out.println("Region is Enterd");
-		//driver.findElement(By.xpath("//*[@id='billing:postcode']")).sendKeys("test");
-		//System.out.println("Billing postcode is Enterd");
-
 		//Select oSelect2 = new Select(driver.findElement(By.xpath("//*[@id='billing:country_id']")));
 		//oSelect2.selectByVisibleText("PAKISTAN");
 
@@ -295,24 +271,27 @@ public class SanaAbbasTestSuite {
 		driver.findElement(By.xpath("//*[@id='billing:telephone']")).sendKeys("03001234567");
 		System.out.println("Telephone is Enterd");
 
-//		driver.findElement(By.xpath("//*[@id='tel2']")).sendKeys("03001234567");
-//		System.out.println("Telephone is Confirmed");
-
 		//*[@id="shipping:same_as_billing"]
 		driver.findElement(By.xpath("//*[@id='shipping:same_as_billing']")).click();
 		System.out.println("Shipping to this address is clicked");
 
-		//SELECT CASH ON DELEIVERY
-		//*[@id="p_method_cashondelivery"]
-//		driver.findElement(By.xpath("//*[@id='p_method_cashondelivery']")).click();
-//		System.out.println("Cash on Delivery is Clicked");
-
 		//PLACE ORDER
 		WebDriverWait wait3 = new WebDriverWait(driver, 200);
-		//*[@id="review-buttons-container"]/button
 		//*[@id="review-buttons-container"]/button
 		wait3.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='review-buttons-container']/button")));
 		driver.findElement(By.xpath("//*[@id='review-buttons-container']/button")).click();
 		System.out.println("Place Order Now Button is Clicked");
+		}
+		else
+		{
+			if(bridals==true)
+			{
+				System.out.println("BOOK YOUR APPOINTMENT FOR BRIDALS PRODUCTS");
+			}
+			else if(outOfStock==true)
+			{
+				System.out.println("This Product is Out Of Stock");
+			}
+		}
 	}
 }

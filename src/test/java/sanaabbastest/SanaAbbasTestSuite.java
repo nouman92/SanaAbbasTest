@@ -286,11 +286,17 @@ public class SanaAbbasTestSuite {
 		oSelect3.selectByIndex(3);
 		System.out.println("City is Enterd");
 
+		driver.findElement(By.xpath("//*[@id='billing:region']")).sendKeys("test");
+		System.out.println("Region is Enterd");
+		
+		driver.findElement(By.xpath("//*[@id='billing:postcode']")).sendKeys("test");
+		System.out.println("Billing postcode is Enterd");
+		
 		driver.findElement(By.xpath("//*[@id='billing:telephone']")).sendKeys("03001234567");
 		System.out.println("Telephone is Enterd");
 
-		driver.findElement(By.xpath("//*[@id='tel2']")).sendKeys("03001234567");
-		System.out.println("Telephone is Confirmed");
+//		driver.findElement(By.xpath("//*[@id='tel2']")).sendKeys("03001234567");
+//		System.out.println("Telephone is Confirmed");
 
 		//*[@id="shipping:same_as_billing"]
 		driver.findElement(By.xpath("//*[@id='shipping:same_as_billing']")).click();
